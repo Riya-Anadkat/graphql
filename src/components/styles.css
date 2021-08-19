@@ -1,0 +1,15 @@
+
+h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+}
+
+h5 {
+    display: inline;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+}
+
+input {
+    margin-bottom: 1rem;
+}
