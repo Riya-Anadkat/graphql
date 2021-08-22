@@ -1,10 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
-import Page from './components/Page';
+import TopicPage from './components/TopicPage/TopicPage';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
 function App() {
   return (
-    <Page />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/threads'>
+          <div> threads</div>
+          {/* <TheadsPage /> */}
+        </Route>
+        <Route exact path='/threads/:topicId'>
+          <TopicPage />
+        </Route>
+        <Route path='/'>
+          <div> login</div>
+          {/* <Login /> */}
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

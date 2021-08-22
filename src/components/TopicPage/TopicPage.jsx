@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useQuery, gql, useMutation } from '@apollo/client';
 import './styles.css'
 
-const Page = () => {
+const TopicPage = () => {
     const [ commentValue , setCommentValue ] = useState("");
 
     const { data, loading, error } = useQuery(gql`
@@ -81,4 +81,4 @@ const Page = () => {
     )
 }
 
-export default Page
+export default TopicPage
