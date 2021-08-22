@@ -18,6 +18,7 @@ const Page = () => {
         getComments {
             author
             comment
+            id
         }
     }`,{variables: {
 
@@ -29,6 +30,12 @@ const Page = () => {
                 comment
             }
     }`)
+
+    const [deleteCommentFunction, {data: deleteCommentData}] = useMutation(gql`
+        mutation deleteComment($id: ID!){
+            deleteComment(id: $id)
+        }
+    `)
 
     const handleMutate = () => {
         mutateFunction({variables: {
@@ -43,11 +50,19 @@ const Page = () => {
         setCommentValue(value)
     };
 
+    const handleDeleteComment = (id) => {
+        deleteCommentFunction({variables: {
+            id: id
+        }});
+        refetch();
+    }
+
    const DisplayComments = () => {
     return (
        <div>
             {commentsData?.getComments.map((commentData) => (
                 <div>
+                <h5><button onClick={() => handleDeleteComment(commentData.id)}>delete</button></h5>
                 <h5> {commentData.author}: </h5>
                 <h5> {commentData.comment}</h5>
                 </div>
