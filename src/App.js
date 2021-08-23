@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import TopicPage from './components/TopicPage/TopicPage';
+import LoginPage from './components/LoginPage/LoginPage';
 import {
   BrowserRouter,
   Switch,
@@ -19,8 +20,8 @@ function App() {
           <TopicPage />
         </Route>
         <Route path='/'>
-          <div> login</div>
-          {/* <Login /> */}
+      
+          <LoginPage />
         </Route>
       </Switch>
     </BrowserRouter>
