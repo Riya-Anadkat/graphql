@@ -4,9 +4,13 @@ import "firebase/auth";
 import "firebase/firestore";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import './styles.css'
 
-// import dotenv from 'dotenv';
-// dotenv.config();
 require('dotenv').config();
 
 const LoginPage = () => {
@@ -38,16 +42,40 @@ const LoginPage = () => {
         
         return(
             <div>
-                <h2>Sign in</h2>
-                <button onClick={signInWithGoogle}>Google</button>
-                <button>Email</button>
+            <Card>
+            <Card.Body>
+                <Card.Title>Sign in</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Sign in using one of the options below</Card.Subtitle>
+                <div className="d-grid gap-2">
+                <Button className="signInButton" onClick={signInWithGoogle} variant="dark">Sign in with Google</Button>
+                {/* <Button className="signInButton" variant="dark">Sign in with Email</Button> */}
+                <Button className="signInButton"  variant="secondary">Browse Anonymously</Button>
+                </div>
+            </Card.Body>
+            </Card>
             </div>
         )
     }
-    console.log(user ? "hi" : "bye")
+
+    const SignOut = () => {
+        return (
+            <div>
+                  <Navbar bg="dark" variant="dark">
+                    <Container>
+                    <Nav>
+                        <Nav.Item >
+                            <Nav.Link onClick={() => auth.signOut()} >Sign out</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    </Container>
+                </Navbar>
+            </div>
+        )
+    }
+
     return (
         <div>
-            {user ? <h1>sign out</h1> : <SignIn /> }
+            {user ? <SignOut /> : <SignIn /> }
         </div>
     )
 }

@@ -12,17 +12,16 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/threads'>
+        <div>
+        <LoginPage />
+        <Route exact path='/'>
           <div> threads</div>
           {/* <TheadsPage /> */}
         </Route>
-        <Route exact path='/threads/:topicId'>
+        <Route exact path='/:topicId'>
           <TopicPage />
         </Route>
-        <Route path='/'>
-      
-          <LoginPage />
-        </Route>
+        </div>
       </Switch>
     </BrowserRouter>
   );
