@@ -33,7 +33,9 @@ const LoginPage = () => {
     const auth = firebase.auth();
     const firestore = firebase.firestore();
     const [user] = useAuthState(auth);
-
+    console.log(auth.currentUser?.uid)
+    console.log(auth.currentUser?.photoURL)
+    console.log(user?.displayName)
     const SignIn = () => {
         const signInWithGoogle = () => {
             const provider = new firebase.auth.GoogleAuthProvider();

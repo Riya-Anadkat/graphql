@@ -14,11 +14,11 @@ function App() {
       <Switch>
         <div>
         <LoginPage />
-        <Route exact path='/'>
+        <Route exact path='/threads'>
           <div> threads</div>
           {/* <TheadsPage /> */}
         </Route>
-        <Route exact path='/:topicId'>
+        <Route exact path='/threads/:topicId'>
           <TopicPage />
         </Route>
         </div>
