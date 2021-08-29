@@ -59,13 +59,20 @@ const TopicPage = ({currentUser}) => {
     }
 
    const DisplayComments = () => {
+
+    const DisplayTrash = (author, user, id) => {
+        if (author === user) {
+            return <TrashFill onClick={() => handleDeleteComment(id)}/>
+        }
+        return null;
+    }
     return (
        <div>
             {commentsData?.getComments.map((commentData) => (
                 <div>
                 <h5 className="userName"> {commentData.author}: </h5>
                 <h5 className="comment"> {commentData.comment}</h5>
-                <TrashFill onClick={() => handleDeleteComment(commentData.id)}/>
+                {DisplayTrash(commentData.author, currentUser, commentData.id)}
                 </div>
             ))}
        </div>

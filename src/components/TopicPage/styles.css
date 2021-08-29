@@ -20,10 +20,13 @@
     display: inline;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
 }
 
 .comment {
     display: inline;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: normal;
+    margin-right: 0.5rem;
 }
