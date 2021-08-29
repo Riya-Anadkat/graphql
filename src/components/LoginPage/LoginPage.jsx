@@ -37,9 +37,6 @@ const LoginPage = ({SetCurrentUser}) => {
     const firestore = firebase.firestore();
     const [user] = useAuthState(auth);
     console.log(auth.currentUser)
-    // console.log(auth.currentUser?.uid)
-    // console.log(auth.currentUser?.photoURL)
-    // console.log(user?.displayName)
     SetCurrentUser(user?.displayName)
 
     const SignIn = () => {
@@ -57,11 +54,10 @@ const LoginPage = ({SetCurrentUser}) => {
             <Card>
             <Card.Body>
                 <Card.Title>Sign in</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Sign in using one of the options below</Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">Select one of options below to begin chatting!</Card.Subtitle>
                 <div className="d-grid gap-2">
                 <Button className="signInButton" onClick={signInWithGoogle} variant="dark">Sign in with Google</Button>
-                {/* <Button className="signInButton" variant="dark">Sign in with Email</Button> */}
-                <Button className="signInButton"  variant="secondary"  onClick={signInAnonymously}>Browse Anonymously</Button>
+                <Button className="signInButton"  variant="secondary"  onClick={signInAnonymously}>Chat Anonymously</Button>
                 </div>
             </Card.Body>
             </Card>
@@ -70,7 +66,7 @@ const LoginPage = ({SetCurrentUser}) => {
     }
 
     const SignOut = () => {
-        history.push('/threads/:topicId')
+        history.push('/chattingRoom')
 
         const handleSignOut = () => {
             auth.signOut()
@@ -78,15 +74,21 @@ const LoginPage = ({SetCurrentUser}) => {
         }
         return (
             <div>
-                  <Navbar bg="dark" variant="dark">
-                    <Container>
-                    <Nav>
-                        <Nav.Item >
-                            <Nav.Link onClick={handleSignOut} >Sign out</Nav.Link>
-                        </Nav.Item>
+             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Container>
+                <Navbar.Brand>Online Chatting Room</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto">
                     </Nav>
-                    </Container>
-                </Navbar>
+                    <Nav>
+                    <Nav.Link eventKey={2} onClick={handleSignOut}>
+                        Sign out
+                    </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+                </Container>
+            </Navbar>
             </div>
         )
     }

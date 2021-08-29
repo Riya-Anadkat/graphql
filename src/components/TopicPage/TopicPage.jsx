@@ -81,7 +81,7 @@ const TopicPage = ({currentUser}) => {
      
     return (
         <div>
-            <h2 className="heading" >Comments</h2>
+            <h2 className="heading" >Let's Chat</h2>
             <input type="text" value={commentValue} onChange={handleTextChange} className="commentInputField" ></input>
             <button onClick={handleMutate} className="addCommentButton"> Add comment</button>
             <DisplayComments />

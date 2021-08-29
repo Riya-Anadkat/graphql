@@ -11,17 +11,12 @@ import {
 
 function App() {
   const [currentUser, SetCurrentUser] = useState();
-  console.log(currentUser)
   return (
     <BrowserRouter>
       <Switch>
         <div>
         <LoginPage SetCurrentUser={SetCurrentUser}/>
-        <Route exact path='/threads'>
-          <div> threads</div>
-          {/* <TheadsPage /> */}
-        </Route>
-        <Route exact path='/threads/:topicId'>
+        <Route exact path='/chattingRoom'>
           <TopicPage currentUser={currentUser}/>
         </Route>
         </div>
