@@ -1,15 +1,29 @@
-
-h2 {
+.heading {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: normal;
+    text-align: center;
+    margin: 2rem;
 }
 
-h5 {
+.commentInputField {
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    width: 70%;
+}
+
+.addCommentButton {
+    margin-right: 2rem;
+    width: 20%;
+}
+
+.userName {
+    display: inline;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.comment {
     display: inline;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: normal;
-}
-
-input {
-    margin-bottom: 1rem;
 }

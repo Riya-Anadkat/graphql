@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import { useQuery, gql, useMutation } from '@apollo/client';
+import { TrashFill } from 'react-bootstrap-icons';
 import './styles.css'
 
-const TopicPage = () => {
+const TopicPage = ({currentUser}) => {
     const [ commentValue , setCommentValue ] = useState("");
 
     const { data, loading, error } = useQuery(gql`
@@ -40,7 +41,7 @@ const TopicPage = () => {
     const handleMutate = () => {
         mutateFunction({variables: {
             comment: commentValue,
-            author: "Anonymous user"
+            author: currentUser ? currentUser : "Anonymous user"
         }})
         setCommentValue("")
         refetch();
@@ -62,9 +63,9 @@ const TopicPage = () => {
        <div>
             {commentsData?.getComments.map((commentData) => (
                 <div>
-                <h5><button onClick={() => handleDeleteComment(commentData.id)}>delete</button></h5>
-                <h5> {commentData.author}: </h5>
-                <h5> {commentData.comment}</h5>
+                <h5 className="userName"> {commentData.author}: </h5>
+                <h5 className="comment"> {commentData.comment}</h5>
+                <TrashFill onClick={() => handleDeleteComment(commentData.id)}/>
                 </div>
             ))}
        </div>
@@ -73,9 +74,9 @@ const TopicPage = () => {
      
     return (
         <div>
-            <h2>Comments</h2>
-            <input type="text" value={commentValue} onChange={handleTextChange}></input>
-            <button onClick={handleMutate}> Add comment</button>
+            <h2 className="heading" >Comments</h2>
+            <input type="text" value={commentValue} onChange={handleTextChange} className="commentInputField" ></input>
+            <button onClick={handleMutate} className="addCommentButton"> Add comment</button>
             <DisplayComments />
         </div>
     )
